@@ -3,33 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class NewShipScript : MonoBehaviour
-{   
-    public Rigidbody2D myRigidbody;
+{
+    public Rigidbody2D RigidBody;
+    public Transform Sprite = null; // Declaring AimSprite
+    public float vel = 3;
+    public Vector3 rotationaxis;
+
     // Start is called before the first frame update
     void Start()
     {
-   
+        Sprite = GetComponent<Transform>();
     }
-
     // Update is called once per frame
     void Update()
-    {   
-      
-        int x=0;
-        if (Input.GetKeyDown(KeyCode.W)==true)
-        {   
-            x=x+10;
-            transform.Rotate(new Vector3(0, 0, x));
-        }
-        if (Input.GetKeyDown(KeyCode.S)==true)
+    { 
+        if(Input.GetKeyDown(KeyCode.A))
         {
-            x=x-10;
-            transform.Rotate(new Vector3(0, 0, x));
+          //Sprite.Rotate(rotationaxis, rvelocity );
+          Sprite.Rotate(0,0,22);
         }
-        if (Input.GetKeyDown(KeyCode.Space)==true)
-        {   
-            myRigidbody.velocity = Vector2.right * 20;
+        if(Input.GetKeyDown(KeyCode.D))
+        {
+          //Sprite.Rotate(rotationaxis, -rvelocity );
+          Sprite.Rotate(0,0,-22);
         }
+        
+        RigidBody.velocity = Sprite.up * vel * 3;
         
     }
 }
