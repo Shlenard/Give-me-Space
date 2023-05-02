@@ -28,7 +28,14 @@ public class NewShipScript : MonoBehaviour
           Sprite.Rotate(0,0,-22);
         }
         
-        RigidBody.velocity = Sprite.up * vel * 3;
-        
+        RigidBody.velocity = Sprite.up * vel * 3;     
+
     }
+            private void OnTriggerEnter2D(Collider2D portal)
+        {
+            RigidBody.position = new Vector3(0,0,0);
+            
+        }
+
+
 }
